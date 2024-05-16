@@ -1,6 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <PackageId>SpecificationRepository</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Joel Gross</Authors>
+    <Company>Joel Gross</Company>
+    <Description>Specification With Repository Pattern implementation for simplified GET and CRUD operations.</Description>
+    <PackageTags>tag1;tag2</PackageTags>
+    <RepositoryUrl>https://github.com/DarkTroubadour1/Specification.git</RepositoryUrl>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>

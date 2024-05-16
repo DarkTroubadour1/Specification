@@ -1,0 +1,30 @@
+name: Publish Package
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '5.0.x'
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --configuration Release
+
+    - name: Pack
+      run: dotnet pack --configuration Release --no-build
+
+    - name: Publish to GitHub Packages
+      run: dotnet nuget push bin/Release/*.nupkg --api-key ${{ secrets.PACKAGE_TOKEN }} --source "github"
