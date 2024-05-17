@@ -26,5 +26,13 @@ jobs:
     - name: Pack
       run: dotnet pack --configuration Release --no-build
 
+    # Add a step to list the contents of the bin/Release directory
+    - name: List bin/Release directory
+      run: ls -R bin/Release
+
+    # Add a step to find the .nupkg file
+    - name: Find .nupkg file
+      run: find . -name "*.nupkg"
+      
     - name: Publish to GitHub Packages
       run: dotnet nuget push bin/Release/*.nupkg --api-key ${{ secrets.PACKAGE_TOKEN }} --source "https://nuget.pkg.github.com/DarkTroubadour1/index.json"
